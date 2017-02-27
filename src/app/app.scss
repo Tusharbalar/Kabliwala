@@ -14,3 +14,113 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@import "cornerStone.scss";
+
+$transparent:transparent;
+$icoSize : 2.4rem;
+$full-width : 100%;
+$full-height : 100%;
+$errorColor : red;
+$absolute : absolute;
+$font-sm : 12px;
+$font-md : 16px;
+$font-lg : 18px;
+$inherit : inherit;
+
+// Custom Navbar Style
+.navBtnRight {
+  height: 2.0em;
+  box-shadow: none;
+  ion-icon {
+    font-size: 2em;
+  }
+}
+.item-md ion-icon[item-left] + .item-inner, .item-md ion-icon[item-left] + .item-input {
+  margin-left: 8px;
+}
+
+ion-navbar.toolbar.toolbar-ios-primary.statusbar-padding {
+  padding-top: 20px;
+}
+
+ion-toolbar.toolbar.toolbar-ios.toolbar-ios-primary {
+  padding-top: 20px;
+}
+
+.bigIcon{
+  font-size: 120px;
+    color: #6987ac;
+    width: 103px;
+    height: 114px;
+}
+
+
+.csBlueTheme{
+  color: #fff;
+}
+
+.csBlueColor{
+  @extend .csBackground;
+  background-image: csBackgroundSvg('dashBoard.svg');
+  font: {
+    size: 19px;
+    style: italic;
+  }
+}
+
+ion-toolbar{
+  .toolbar{
+    .toolbar-ios{
+      .toolbar-ios-primary {
+        padding-top: 20px;
+      }
+    }
+    .toolbar-md{
+      .toolbar-md-primary {
+        padding-top: 20px;
+      }
+    }
+    .toolbar-wp{
+      .toolbar-wp-primary {
+        padding-top: 20px;
+      }
+    }
+  }
+}
+
+/* CS Theme */
+.csLightText{
+  color:#fff;
+}
+.csGrayText{
+  color:gray;
+}
+
+.csStrip{
+    background:$csStripColor;
+}
+
+.csBlueColor{
+  background:$csDarkStrip;
+}
+
+.csSelected{
+  background: #dedede;
+  color: #6d6d6d;
+  font-weight: bold;
+  border-left:3px solid $color1;
+  ion-icon{
+    color:$color1;
+  }  
+}
+
+.toolbar-ios ion-title {
+  padding: 0 65px 0px !important;
+}
+
+.noBorder-item{
+  .item-inner {
+    border-bottom: 0px !important;
+  }  
+}
