@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
+import { HomePage } from '../pages/homepage/homepage';
 import { ComplaintPage } from '../pages/complaint/complaint';
 import { SuggestionPage } from '../pages/suggestion/suggestion';
 import { SurveyPage } from '../pages/survey/survey'; 
@@ -10,7 +10,7 @@ import { CustomNavbar } from '../custom-component/navbar.component.ts';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    HomePage,
     ComplaintPage,
     SurveyPage,
     SuggestionPage,
@@ -22,7 +22,7 @@ import { CustomNavbar } from '../custom-component/navbar.component.ts';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    HomePage,
     ComplaintPage,
     SurveyPage,
     SuggestionPage,

@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { ComplaintPage } from '../complaint/complaint';
 import { SuggestionPage } from '../suggestion/suggestion';
 import { SurveyPage } from '../survey/survey'; 
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'homepage',
+  templateUrl: 'homepage.html'
 })
 
-export class AboutPage {
+export class HomePage {
 
   constructor(public navCtrl: NavController,
               public appCtrl: App) {
