@@ -22,7 +22,9 @@ export class SurveyService {
   }
 
   getOptions() {
-
+    return this.http.get(this.baseUrl + "/survey/options")
+                    .map(this.extractData)
+                    .catch(this.handleError);
   }
 
   private extractData(res: Response) {

@@ -11,6 +11,7 @@ import { CustomNavbar } from '../custom-component/navbar.component.ts';
 import { SurveyService } from '../service/survey.service';
 import { CustomHttpService } from '../service/custom.header.service';
 import { RequestOptions, HttpModule, XHRBackend } from '@angular/http';
+import { Storage } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { RequestOptions, HttpModule, XHRBackend } from '@angular/http';
     SuggestionPage,
     CustomNavbar
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, SurveyService,
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, SurveyService, Storage,
   {
     provide: CustomHttpService,
     useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => {
