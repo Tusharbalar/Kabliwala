@@ -4,6 +4,9 @@ import { ComplaintPage } from '../complaint/complaint';
 import { SuggestionPage } from '../suggestion/suggestion';
 import { SurveyPage } from '../survey/survey'; 
 
+// import service
+import { SurveyService } from '../../service/survey.service';
+
 @Component({
   selector: 'homepage',
   templateUrl: 'homepage.html'
@@ -12,8 +15,17 @@ import { SurveyPage } from '../survey/survey';
 export class HomePage {
 
   constructor(public navCtrl: NavController,
+              public surveyService: SurveyService,
               public appCtrl: App) {
 
+  }
+
+  ionViewWillEnter() {
+    this.surveyService.getQuestion().subscribe((res) => {
+      console.log("res", res);
+    }, (err) => {
+      console.log("Err", err);
+    });
   }
 
   goToComplaint() {

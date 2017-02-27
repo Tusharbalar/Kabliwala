@@ -7,6 +7,11 @@ import { SuggestionPage } from '../pages/suggestion/suggestion';
 import { SurveyPage } from '../pages/survey/survey'; 
 import { CustomNavbar } from '../custom-component/navbar.component.ts';
 
+//import service
+import { SurveyService } from '../service/survey.service';
+import { CustomHttpService } from '../service/custom.header.service';
+import { RequestOptions, HttpModule, XHRBackend } from '@angular/http';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -28,6 +33,13 @@ import { CustomNavbar } from '../custom-component/navbar.component.ts';
     SuggestionPage,
     CustomNavbar
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, SurveyService,
+  {
+    provide: CustomHttpService,
+    useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => {
+      return new CustomHttpService(backend, defaultOptions);
+    },
+    deps: [XHRBackend, RequestOptions]
+  }]
 })
 export class AppModule {}
