@@ -2,18 +2,18 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { ComplaintPage } from '../pages/complaint/complaint';
+import { SuggestionPage } from '../pages/suggestion/suggestion';
+import { SurveyPage } from '../pages/survey/survey'; 
 import { CustomNavbar } from '../custom-component/navbar.component.ts';
 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
+    ComplaintPage,
+    SurveyPage,
+    SuggestionPage,
     CustomNavbar
   ],
   imports: [
@@ -23,9 +23,9 @@ import { CustomNavbar } from '../custom-component/navbar.component.ts';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
+    ComplaintPage,
+    SurveyPage,
+    SuggestionPage,
     CustomNavbar
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
