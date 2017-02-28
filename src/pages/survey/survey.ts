@@ -77,24 +77,7 @@ export class SurveyPage {
         console.log("DSADASD", this.finalArr)
       });
       profileModal.present();
-      // this.submitSurvey(this.finalArr);
     }
-  }
-
-  submitSurvey(data) {
-    this.surveyService.save(data).subscribe((res) => {
-      this.onSuccess(res);
-    }, (err) => {
-      this.onError(err);
-    });
-  }
-
-  onSuccess(res) {
-    console.log("res", res);
-  }
-
-  onError(err) {
-    console.log("err", err);
   }
 
 }

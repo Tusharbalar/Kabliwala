@@ -4,24 +4,26 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item>
-      <ion-label color="primary" stacked>Customer Name</ion-label>
-      <ion-input type="text" name="customerName" [(ngModel)]="customerName" placeholder="optional"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Email Id</ion-label>
-      <ion-input type="email" name="email" [(ngModel)]="customersEmail" placeholder="optional"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Contact No</ion-label>
-      <ion-input type="number" name="phone" [(ngModel)]="customersContactNo" placeholder="optional"></ion-input>
-    </ion-item>
-    <button ion-button icon-only outline (click)="goToHome()">
-      <ion-icon name="home"></ion-icon>
-    </button>
-    <button ion-button outline (click)="onSubmit()">SUBMIT</button>
-    <button ion-button icon-left outline (click)="dismiss()">
-      <ion-icon name="md-arrow-round-back"> Go Back</ion-icon>
-    </button>
+    <form name="details" [formGroup]="details" novalidate>
+      <ion-item>
+        <ion-label color="primary" stacked>Customer Name</ion-label>
+        <ion-input type="text" name="customerName" formControlName="customerName" placeholder="optional"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Email Id</ion-label>
+        <ion-input type="email" name="email" formControlName="customersEmail" placeholder="optional"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Contact No</ion-label>
+        <ion-input type="number" name="phone" formControlName="customersContactNo" placeholder="optional"></ion-input>
+      </ion-item>
+      <button ion-button icon-only outline (click)="goToHome()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+      <button ion-button outline type="button" (click)="onSubmit()">SUBMIT</button>
+      <button ion-button icon-left outline type="button" (click)="dismiss()">
+        <ion-icon name="md-arrow-round-back"> Go Back</ion-icon>
+      </button>
+    </form>
   </ion-list>
 </ion-content>
