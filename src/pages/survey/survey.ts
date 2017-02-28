@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 
 // import service
 import { SurveyService } from '../../service/survey.service';
-import * as _ from 'underscore';
 
 @Component({
   selector: 'survey',
@@ -34,19 +33,20 @@ export class SurveyPage {
 
   onSubmit() {
     this.fillStarts.forEach((val, index) => {
-      if (_.isNumber(val)) {
-        this.finalArr.push({
-          questionId: this.questions[index].id,
-          optionId: val
-        });
-      } else {
+      if (isNaN(val)) {
         this.finalArr.push({
           questionId: this.questions[index].id,
           comments: val
         });
+      } else {
+        this.finalArr.push({
+          questionId: this.questions[index].id,
+          optionId: val
+        });
       }
     });
-    this.submitSurvey(this.finalArr);
+    console.log(this.finalArr);
+    // this.submitSurvey(this.finalArr);
   }
 
   submitSurvey(data) {
