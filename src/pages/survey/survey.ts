@@ -17,6 +17,7 @@ export class SurveyPage {
   // for fill starts
   fillStarts = [];
   finalArr = [];
+  count = 0;
 
   constructor(public navCtrl: NavController,
               public surveyService: SurveyService) { }
@@ -28,10 +29,17 @@ export class SurveyPage {
   getQuestions() {
     this.surveyService.getQuestionFromStorage().then((questions) => {
       this.questions = questions;
+      console.log(this.questions);
+      this.questions.forEach((val, index) => {
+        if (val.questionTypeId == "1") {
+          this.count++;
+        }
+      });
     });
   }
 
   onSubmit() {
+    let test = 0;
     this.fillStarts.forEach((val, index) => {
       if (isNaN(val)) {
         this.finalArr.push({
@@ -39,14 +47,18 @@ export class SurveyPage {
           comments: val
         });
       } else {
+        test++;
         this.finalArr.push({
           questionId: this.questions[index].id,
           optionId: val
         });
       }
     });
-    console.log(this.finalArr);
-    // this.submitSurvey(this.finalArr);
+    if (this.count != test) {
+      console.log("err")
+    } else {
+      this.submitSurvey(this.finalArr);
+    }
   }
 
   submitSurvey(data) {

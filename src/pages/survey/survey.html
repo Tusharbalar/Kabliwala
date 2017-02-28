@@ -5,11 +5,11 @@
   <div *ngFor="let que of questions; let i = index">
     <b> Q - {{i + 1}}) {{que.title}} </b>
     <ion-card color="light">
-      <rating *ngIf="que.questionTypeId == '1'" [(ngModel)]="fillStarts[i]" max="5" [ngModelOptions]="{standalone: true}" required></rating>
+      <rating *ngIf="que.questionTypeId == '1'" [(ngModel)]="fillStarts[i]" name="fillStarts[i]" max="5"></rating>
     </ion-card>
     <ion-card color="light" *ngIf="que.questionTypeId == '3'">
       <ion-item>
-        <ion-textarea [(ngModel)]="fillStarts[i]" placeholder="Enter a description"></ion-textarea>
+        <ion-textarea [(ngModel)]="fillStarts[i]" name="text" placeholder="Enter a description"></ion-textarea>
       </ion-item>
     </ion-card>
   </div>
