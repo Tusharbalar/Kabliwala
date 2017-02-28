@@ -65,6 +65,10 @@ export class SurveyPage {
       this.nl.showToast("Please rate all questions");
     } else {
       let profileModal = this.modalCtrl.create(CustomerDetails, { data: this.finalArr });
+      profileModal.onDidDismiss((res) => {
+        this.finalArr = [];
+        console.log("DSADASD", this.finalArr)
+      });
       profileModal.present();
       // this.submitSurvey(this.finalArr);
     }

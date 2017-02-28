@@ -3,5 +3,19 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Customer Deatils</h2>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" stacked>Customer Name</ion-label>
+      <ion-input type="text" name="customerName" [(ngModel)]="customerName" placeholder="optional"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Email Id</ion-label>
+      <ion-input type="email" name="email" [(ngModel)]="customersEmail" placeholder="optional"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Contact No</ion-label>
+      <ion-input type="number" name="phone" [(ngModel)]="customersContactNo" placeholder="optional"></ion-input>
+    </ion-item>
+    <button ion-button outline (click)="onSubmit()">SUBMIT</button>
+  </ion-list>
 </ion-content>
