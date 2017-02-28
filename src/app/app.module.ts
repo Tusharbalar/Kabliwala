@@ -7,6 +7,8 @@ import { SuggestionPage } from '../pages/suggestion/suggestion';
 import { SurveyPage } from '../pages/survey/survey'; 
 import { CustomNavbar } from '../custom-component/navbar.component.ts';
 
+import { Ionic2RatingModule } from 'ionic2-rating';
+
 //import service
 import { SurveyService } from '../service/survey.service';
 import { CustomHttpService } from '../service/custom.header.service';
@@ -23,7 +25,8 @@ import { Storage } from '@ionic/storage';
     CustomNavbar
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
