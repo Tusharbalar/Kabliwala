@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 
 // import service
 import { SurveyService } from '../../service/survey.service';
+import { CustomService } from '../../service/custom.service';
+
+// import modal
+import { CustomerDetails } from './customer-details/details';
 
 @Component({
   selector: 'survey',
@@ -20,6 +24,8 @@ export class SurveyPage {
   count = 0;
 
   constructor(public navCtrl: NavController,
+              public nl: CustomService,
+              public modalCtrl: ModalController,
               public surveyService: SurveyService) { }
 
   ionViewWillEnter() {
@@ -40,6 +46,7 @@ export class SurveyPage {
 
   onSubmit() {
     let test = 0;
+    this.finalArr = [];
     this.fillStarts.forEach((val, index) => {
       if (isNaN(val)) {
         this.finalArr.push({
@@ -55,9 +62,11 @@ export class SurveyPage {
       }
     });
     if (this.count != test) {
-      console.log("err")
+      this.nl.showToast("Please rate all questions");
     } else {
-      this.submitSurvey(this.finalArr);
+      let profileModal = this.modalCtrl.create(CustomerDetails, { data: this.finalArr });
+      profileModal.present();
+      // this.submitSurvey(this.finalArr);
     }
   }
 
