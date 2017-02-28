@@ -7,12 +7,7 @@ import { HomePage } from '../pages/homepage/homepage';
   template: `
     <ion-navbar color="primary">
       <ion-toolbar>
-        <ion-buttons start>
-          <button ion-button icon-only color="royal" (click)="goToHome()">
-            <ion-icon name="home"></ion-icon>
-          </button>
-        </ion-buttons>
-        <ion-title >
+        <ion-title>
           <span>{{title | uppercase}}</span>
         </ion-title>
       </ion-toolbar>

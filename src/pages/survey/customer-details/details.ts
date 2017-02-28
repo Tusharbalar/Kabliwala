@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewController, NavParams } from 'ionic-angular';
+import { ViewController, NavParams, App } from 'ionic-angular';
+import { HomePage } from '../../homepage/homepage';
 
 @Component({
   selector: 'customer-details',
@@ -17,6 +18,7 @@ export class CustomerDetails implements OnInit{
   private data;
 
   constructor(private viewCtrl: ViewController,
+              public appCtrl: App,
               private navParams: NavParams) {
 
   }
@@ -37,6 +39,11 @@ export class CustomerDetails implements OnInit{
       results: this.navData
     }
     console.log("DSADAS", this.data)
+  }
+
+  goToHome() {
+    this.dismiss();
+    this.appCtrl.getRootNav().setRoot(HomePage);
   }
 
 }

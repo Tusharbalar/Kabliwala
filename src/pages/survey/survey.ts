@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, App } from 'ionic-angular';
+import { HomePage } from '../homepage/homepage';
 
 // import service
 import { SurveyService } from '../../service/survey.service';
@@ -25,11 +26,16 @@ export class SurveyPage {
 
   constructor(public navCtrl: NavController,
               public nl: CustomService,
+              public appCtrl: App,
               public modalCtrl: ModalController,
               public surveyService: SurveyService) { }
 
   ionViewWillEnter() {
     this.getQuestions();
+  }
+
+  goToHome() {
+    this.appCtrl.getRootNav().setRoot(HomePage);
   }
 
   getQuestions() {
@@ -61,6 +67,7 @@ export class SurveyPage {
         });
       }
     });
+    console.log("AAAA", this.count, test)
     if (this.count != test) {
       this.nl.showToast("Please rate all questions");
     } else {
