@@ -12,6 +12,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 //import service
 import { SurveyService } from '../service/survey.service';
 import { CustomHttpService } from '../service/custom.header.service';
+import { CustomService } from '../service/custom.service';
 import { RequestOptions, HttpModule, XHRBackend } from '@angular/http';
 import { Storage } from '@ionic/storage';
 
@@ -37,7 +38,7 @@ import { Storage } from '@ionic/storage';
     SuggestionPage,
     CustomNavbar
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, SurveyService, Storage,
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, SurveyService, Storage, CustomService,
   {
     provide: CustomHttpService,
     useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => {
