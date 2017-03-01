@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { App } from 'ionic-angular';
+import { AppreciationPage } from '../appreciation/appreciation';
 
 @Component({
   selector: 'suggestion',
   templateUrl: 'suggestion.html'
 })
 
-export class SuggestionPage {
+export class SuggestionPage extends AppreciationPage {
 
   public title: string = "New Suggestion";
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public appCtrl: App) {
+    super(appCtrl);
   }
 
 }

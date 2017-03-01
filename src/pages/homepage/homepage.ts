@@ -3,6 +3,7 @@ import { NavController, App } from 'ionic-angular';
 import { ComplaintPage } from '../complaint/complaint';
 import { SuggestionPage } from '../suggestion/suggestion';
 import { SurveyPage } from '../survey/survey'; 
+import { AppreciationPage } from '../appreciation/appreciation'
 
 // import service
 import { SurveyService } from '../../service/survey.service';
@@ -36,7 +37,6 @@ export class HomePage {
         }
       });
     });
-    // this.getSurveyOption();
   }
 
   private getSurveyQuestion() {
@@ -52,16 +52,6 @@ export class HomePage {
     });
   }
 
-  // private getSurveyOption() {
-  //   this.surveyService.getOptions().subscribe((res) => {
-  //     console.log("res", res);
-  //     this.storage.set('options', JSON.stringify(res));
-  //   }, (err) => {
-  //     console.log("Err", err);
-  //     this.onError(err);
-  //   });
-  // }
-
   onError(err) {
     this.nl.hideLoader();
     this.nl.onError(err);
@@ -76,8 +66,11 @@ export class HomePage {
   }
 
   goToSurvey() {
-    console.log("SSSS", this.questions)
     this.appCtrl.getRootNav().setRoot(SurveyPage);
+  }
+
+  goToAppreciation() {
+    this.appCtrl.getRootNav().setRoot(AppreciationPage);
   }
 
 }

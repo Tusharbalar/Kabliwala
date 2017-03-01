@@ -5,6 +5,7 @@ import { HomePage } from '../pages/homepage/homepage';
 import { ComplaintPage } from '../pages/complaint/complaint';
 import { SuggestionPage } from '../pages/suggestion/suggestion';
 import { SurveyPage } from '../pages/survey/survey';
+import { AppreciationPage } from '../pages/appreciation/appreciation';
 import { ModalNavbarComponent } from '../custom-component/modal.navbar.component';
 import { CustomNavbar } from '../custom-component/navbar.component.ts';
 
@@ -27,7 +28,8 @@ import { Storage } from '@ionic/storage';
     SuggestionPage,
     CustomNavbar,
     CustomerDetails,
-    ModalNavbarComponent
+    ModalNavbarComponent,
+    AppreciationPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -42,7 +44,8 @@ import { Storage } from '@ionic/storage';
     SuggestionPage,
     CustomNavbar,
     CustomerDetails,
-    ModalNavbarComponent
+    ModalNavbarComponent,
+    AppreciationPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, SurveyService, Storage, CustomService,
   {
