@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { ToastController,
          AlertController,
-         LoadingController,
-         Events } from 'ionic-angular';
+         LoadingController } from 'ionic-angular';
 
 @Injectable()
 export class CustomService {
@@ -13,7 +12,6 @@ export class CustomService {
 
   constructor(private l: LoadingController,
               private a: AlertController,
-              public events: Events,
               private t: ToastController) { }
 
   public showLoader() {
@@ -41,11 +39,7 @@ export class CustomService {
   }
 
   public onError(err) {
-    this.hideLoader();
     let a = err.split("-")[0];
-    if (a == 401 || a === 0) {
-      this.events.publish("session:expired");
-    }
     this.showToast(err);
   }
 

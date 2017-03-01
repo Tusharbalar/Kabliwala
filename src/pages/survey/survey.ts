@@ -39,7 +39,9 @@ export class SurveyPage {
   }
 
   getQuestions() {
+    this.nl.showLoader();
     this.surveyService.getQuestionFromStorage().then((questions) => {
+      this.nl.hideLoader();
       this.questions = questions;
       console.log(this.questions);
       this.questions.forEach((val, index) => {

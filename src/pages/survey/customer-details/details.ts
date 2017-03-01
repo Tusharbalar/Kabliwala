@@ -3,6 +3,7 @@ import { ViewController, NavParams, App } from 'ionic-angular';
 import { HomePage } from '../../homepage/homepage';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SurveyService } from '../../../service/survey.service';
+import { CustomService } from '../../../service/custom.service';
 
 @Component({
   selector: 'customer-details',
@@ -19,6 +20,7 @@ export class CustomerDetails implements OnInit{
 
   constructor(private viewCtrl: ViewController,
               public appCtrl: App,
+              public nl: CustomService,
               public surveyService: SurveyService,
               private navParams: NavParams) {
 
@@ -40,7 +42,7 @@ export class CustomerDetails implements OnInit{
   onSubmit() {
     this.details.value["results"] = this.navData;
     console.log("DSADAS", this.details.value);
-    this.submitSurvey(this.details);
+    this.submitSurvey(this.details.value);
   }
 
   goToHome() {
@@ -49,6 +51,7 @@ export class CustomerDetails implements OnInit{
   }
 
   submitSurvey(data) {
+    this.nl.showLoader();
     this.surveyService.save(data).subscribe((res) => {
       this.onSuccess(res);
     }, (err) => {
@@ -57,11 +60,17 @@ export class CustomerDetails implements OnInit{
   }
 
   onSuccess(res) {
+    this.nl.hideLoader();
+    this.goToHome();
+    this.nl.showToast("Survey submitted successfully.. Thank you");
     console.log("res", res);
   }
 
   onError(err) {
+    this.nl.hideLoader();
+    this.goToHome();
     console.log("err", err);
+    this.nl.onError(err);
   }
 
 }

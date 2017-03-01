@@ -41,7 +41,7 @@ export class SurveyService {
   }
 
   private extractData(res: Response) {
-    if (res.status === 204) { return res; }
+    if (res.status === 204 || res.status === 400) { return res; }
     let body = res.json();
     return body || { };
   }
@@ -49,11 +49,11 @@ export class SurveyService {
   private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+      // const body = error.json() || '';
+      // const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''}`;
       if (error.status === 0) {
-        errMsg = `${error.status} - "Something is wrong.."`;
+        errMsg = `${error.status} - "Internal server error"`;
       }
     } else {
       errMsg = error.message ? error.message : error.toString();
