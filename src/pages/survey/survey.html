@@ -2,6 +2,7 @@
   <nl-navbar [title]="title"></nl-navbar>
 </ion-header>
 <ion-content padding class="csMargin survey">
+  <ion-spinner *ngIf="!questions"></ion-spinner>
   <div *ngFor="let que of questions; let i = index">
     <b> Q - {{i + 1}}) {{que.title}} </b>
     <ion-card color="light">

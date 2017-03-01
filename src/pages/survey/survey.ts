@@ -23,6 +23,7 @@ export class SurveyPage {
   fillStarts = [];
   finalArr = [];
   count = 0;
+  sel_count = 0;
 
   constructor(public navCtrl: NavController,
               public nl: CustomService,
@@ -39,11 +40,8 @@ export class SurveyPage {
   }
 
   getQuestions() {
-    this.nl.showLoader();
     this.surveyService.getQuestionFromStorage().then((questions) => {
-      this.nl.hideLoader();
       this.questions = questions;
-      console.log(this.questions);
       this.questions.forEach((val, index) => {
         if (val.questionTypeId == "1") {
           this.count++;
@@ -53,8 +51,12 @@ export class SurveyPage {
   }
 
   onSubmit() {
-    let test = 0;
+    this.sel_count = 0;
     this.finalArr = [];
+    this.buildArray();
+  }
+
+  buildArray() {
     this.fillStarts.forEach((val, index) => {
       if (isNaN(val)) {
         this.finalArr.push({
@@ -62,24 +64,31 @@ export class SurveyPage {
           comments: val
         });
       } else {
-        test++;
+        this.sel_count++;
         this.finalArr.push({
           questionId: this.questions[index].id,
           optionId: val
         });
       }
     });
-    console.log("AAAA", this.count, test)
-    if (this.count != test) {
+    this.showErrMsg();
+  }
+
+  showErrMsg() {
+    if (this.count != this.sel_count) {
       this.nl.showToast("Please rate all questions");
     } else {
-      let profileModal = this.modalCtrl.create(CustomerDetails, { data: this.finalArr });
-      profileModal.onDidDismiss((res) => {
-        this.finalArr = [];
-        console.log("DSADASD", this.finalArr)
-      });
-      profileModal.present();
+      this.openCustomerDetailsModal();
     }
+  }
+
+  openCustomerDetailsModal() {
+    let profileModal = this.modalCtrl.create(CustomerDetails, { data: this.finalArr });
+    profileModal.onDidDismiss((res) => {
+      this.finalArr = [];
+      console.log("DSADASD", this.finalArr)
+    });
+    profileModal.present();
   }
 
 }
